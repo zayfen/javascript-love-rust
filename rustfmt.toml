@@ -1,7 +1,7 @@
 edition = "2018"
 max_width = 120
-blank_lines_lower_bound = 1
-space_before_fn_sig_paren = true
-space_around_ranges = true
+# blank_lines_lower_bound = 1
+# space_before_fn_sig_paren = true 
+# space_around_ranges = true
 tab_spaces = 2
-wrap_comments = true
+# wrap_comments = true
