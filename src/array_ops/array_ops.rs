@@ -10,16 +10,32 @@ fn entries<T: Sized> (arr: &Vec<T>) -> impl Iterator<Item=(usize, &T)> {
   (0..len).zip(arr.into_iter()).into_iter()
 }
 
-fn every () {
-  
+fn every<T: Sized> (arr: &Vec<T>, f: fn(&T) -> bool) -> bool {
+  arr.into_iter().all(f)
 }
 
-fn fill () {
-  
+fn fill<T: Sized + Copy> (arr: &mut Vec<T>, val: T, start: usize, end: usize) {
+  let len = arr.len();
+  let start = 0.max(start);
+  let end = len.min(end);
+  if start > end {
+    panic!("start must less equal than end")
+  }
+
+  for i in start..end {
+    arr[i] = val;
+  }
 }
 
-fn filter () {
-  
+fn filter<T: Sized + Copy> (arr: &Vec<T>, f: fn(&&T) -> bool) -> Vec<T> {
+  let iter = arr.into_iter().filter(f);
+  let mut result: Vec<T> = vec![];
+
+  for i in iter {
+    result.push(*i);
+  }
+
+   result
 }
 
 fn find () {
